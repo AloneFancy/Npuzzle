@@ -13,6 +13,7 @@ def main():
 	Npuzzle= State(N)
 	Npuzzle.random()
 	Npuzzle.terminal_display()
+	puzzle(Npuzzle)
 		
 
 if __name__=='__main__':
