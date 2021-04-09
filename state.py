@@ -7,10 +7,11 @@ import sys
 def swap(cell,ax,ay,bx,by):
 	cell[ax][ay],cell[bx][by] = cell[bx][by],cell[ax][ay]	
 class State:
+	cell=[]
 	def __init__(self,N):
 		self.size=N
 		self.cell = [[0 for x in range(N)] for y in range(N)]
-		self.empty_cell=[self.size-1,self.size-1	] 
+		self.empty_cell=[self.size-1,self.size-1] 
 	def random(self):
 		self.pool=[i for i in range (1,self.size*self.size)]
 		for col in range(0,self.size):
@@ -48,12 +49,15 @@ class State:
 		
 	def isGoal(self):
 		""" Check if we get to final state"""
-		for row in (0,self.size):
-			for col in (0,self.size):
-				if ((row==self.size-1) and (col==self.size-1)) :
-					continue
+		for row in range(0,self.size):
+			for col in range(0,self.size):
+				if self.cell[col][row]==0:
+					if ((row==self.size-1) and (col==self.size-1)) :
+						return True
+					else:
+					 	return False
 				else :
-					if (self.cell[col][row]!=col*self.size+row):
+					if (self.cell[col][row]!=row*self.size+col+1):
 						return False		
 		return True
 

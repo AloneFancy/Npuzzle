@@ -12,8 +12,9 @@ def main():
 			print("Please input an integer.")
 	Npuzzle= State(N)
 	Npuzzle.random()
-	Npuzzle.terminal_display()
-	puzzle(Npuzzle)
+	#Npuzzle.terminal_display()
+	Npuzzle.isGoal()
+	DFS(Npuzzle)
 		
 
 if __name__=='__main__':
