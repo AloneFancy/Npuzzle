@@ -22,6 +22,16 @@ class State:
 				self.cell[col][row] = random.choice(self.pool)
 				self.pool.remove(self.cell[col][row])
 
+	def perfect_random(self):
+		for row in range(0,self.size):
+			for col in range(0,self.size):
+				self.cell[col][row]=row*self.size+col+1
+		self.cell[self.size-1][self.size-1]=0
+		move=['left','right','up','down']
+		for i in range(2,random.randint(2,100))	:
+			for j in move:
+				self.movement(j)
+
 	def check_illegal(self,move,col,row):
 		if move=='left' and col==0:
 		 	return True
