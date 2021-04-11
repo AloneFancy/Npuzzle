@@ -8,7 +8,6 @@ move=['left','right','up','down']
 check_finished=False
 
 def check_visted(current_state,visited):   
-    #print("Here is current state",current_state)   
     for element in visited:       
         if element ==current_state:
             return True
@@ -36,14 +35,13 @@ def DFSUtil(theState,visited):
         """
         global check_finished
         if (theState.isGoal()):     
-            #print("The path of states: ",visited)        
             ctypes.windll.user32.MessageBoxW(0, "The program will continue to run until it have no new state", "Final state", 1)
-            os.system("pause")      #Check final goal
+            os.system("pause")      
             return True        
         theState.terminal_display()
         visited.append(convert_to_store(theState)[:])  
         if not check_finished:                                                                          # Not found goal state yet
-            for i in move:  
+            for i in move:
                 if not theState.check_illegal(i,theState.empty_cell[0],theState.empty_cell[1]):         # Check
                     last_state=theState.cell[:]
                     theState.movement(i)                             

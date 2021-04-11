@@ -16,7 +16,8 @@ class State:
 		self.size=N
 		self.cell = [[0 for x in range(N)] for y in range(N)]
 		self.empty_cell=[self.size-1,self.size-1] 
-
+		sys.setrecursionlimit(1000000)
+		
 	def random(self):
 		"""
 			Literally random
