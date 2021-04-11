@@ -2,6 +2,7 @@
 import sys
 from puzzle import *
 from state import *
+from stackDFS import *
 
 def main():
 	N="sdsad"
@@ -11,10 +12,10 @@ def main():
 		except ValueError:
 			print("Please input an integer.")
 	Npuzzle= State(N)
-	Npuzzle.random()
+	Npuzzle.perfect_random()
 	Npuzzle.terminal_display()
-	Npuzzle.isGoal()
-	DFS(Npuzzle)
+	Npuzzle.animated()
+	#DFS(Npuzzle)
 		
 
 if __name__=='__main__':

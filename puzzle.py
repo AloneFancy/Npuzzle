@@ -3,17 +3,17 @@ import time
 import state
 import collections
 import os
+import numpy as np
 move=['left','right','up','down']
 
 def check_visted(current_state,visited):   
     #print("Here is current state",current_state)    
     for element in visited:       
-        print("this",element,current_state)      
         if element ==current_state:
             return True
     return False   
 
-def storing_state(theState):
+def convert_to_store(theState):
     temp=[]
     for i in range(0,theState.size):
         for j in range(0,theState.size):
@@ -31,23 +31,28 @@ def DFS(theState):
 
 
 def DFSUtil(theState,visited):
-        if (theState.isGoal()):
+        """
+        Start iterating throughout the puzzle
+        """
+        if (theState.isGoal()): 
+            print("here we go")    
+            os.system('pause')           #Check final goal
             return True        
-        visited.append(storing_state(theState)[:])
-        print(visited)
-        os.system("pause")
+        visited.append(convert_to_store(theState)[:])  
         for i in move:
             if not theState.check_illegal(i,theState.empty_cell[0],theState.empty_cell[1]):                
-                theState.movement(i)
-                theState.terminal_display()
-                print(visited,theState.cell)
-                if not check_visted(storing_state(theState),visited):                       
-                    last_state=theState.cell
+                last_state=theState.cell[:]
+                theState.movement(i)                             
+                #print("đi thử",visited,theState.cell)
+                if not check_visted(convert_to_store(theState),visited):                       
+                    theState.terminal_display()                    
                     print(i)
                     print("before recursion",last_state)
-                    DFSUtil(theState,visited)   
-                    #visited.pop()
-                    #theState.cell=visited[-1]                    
+                    DFSUtil(theState,visited)
+                    visited.pop()
+                    theState.cell=np.reshape(visited[-1],(theState.size,theState.size))
+                    print('quay lại')   
+                    print(visited)        
                     theState.terminal_display()        
                 else:
                     print("visited",i)                   
