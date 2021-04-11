@@ -17,7 +17,7 @@ def main(state):
     if WINDOW_WIDTH < 200 :
         WINDOW_WIDTH=200
     pygame.init()
-    time.sleep(0.1)
+    time.sleep(0)
     SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
     CLOCK = pygame.time.Clock()
     SCREEN.fill(BLACK)

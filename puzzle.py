@@ -3,7 +3,6 @@ import time
 import state
 import collections
 import os
-import numpy as np
 import ctypes
 move=['left','right','up','down']
 check_finished=False
@@ -37,7 +36,7 @@ def DFSUtil(theState,visited):
         """
         global check_finished
         if (theState.isGoal()):     
-            print("The path of states: ",visited)        
+            #print("The path of states: ",visited)        
             ctypes.windll.user32.MessageBoxW(0, "The program will continue to run until it have no new state", "Final state", 1)
             os.system("pause")      #Check final goal
             return True        
@@ -50,10 +49,9 @@ def DFSUtil(theState,visited):
                     theState.movement(i)                             
                     if not check_visted(convert_to_store(theState),visited):                       
                         theState.animated()                    
-                        print(i)
-                        print("before recursion",visited)
+                        #print(i)
+                        #print("before recursion",visited)
                         DFSUtil(theState,visited)    
-                        print("after recursion")
                         roll_back(i,theState)
                         theState.animated()
                     else:
@@ -61,7 +59,7 @@ def DFSUtil(theState,visited):
             return False
 
 def roll_back(i,theState):
-    print("visited",i)                   
+    #print("visited",i)                   
     if i=="left":
         theState.movement("right")
     elif i=="right":

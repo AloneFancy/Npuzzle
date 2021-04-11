@@ -5,6 +5,7 @@ from state import *
 
 def main():
 	N="sdsad"
+	sys.setrecursionlimit(1000000)
 	while(not isinstance(N,int)):
 		try:
 			N = int(input("Please choose the size for your puzzle:"))
