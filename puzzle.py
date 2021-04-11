@@ -9,7 +9,7 @@ move=['left','right','up','down']
 check_finished=False
 
 def check_visted(current_state,visited):   
-    #print("Here is current state",current_state)    
+    #print("Here is current state",current_state)   
     for element in visited:       
         if element ==current_state:
             return True
@@ -43,29 +43,31 @@ def DFSUtil(theState,visited):
             return True        
         theState.terminal_display()
         visited.append(convert_to_store(theState)[:])  
-        if not check_finished:
+        if not check_finished:                                                                          # Not found goal state yet
             for i in move:
-                if not theState.check_illegal(i,theState.empty_cell[0],theState.empty_cell[1]):                
+                if not theState.check_illegal(i,theState.empty_cell[0],theState.empty_cell[1]):         # Check
                     last_state=theState.cell[:]
                     theState.movement(i)                             
                     if not check_visted(convert_to_store(theState),visited):                       
                         theState.animated()                    
                         print(i)
-                        print("before recursion",last_state)
-                        DFSUtil(theState,visited)
-                        # visited.pop()
-                        # theState.cell=np.reshape(visited[-1],(theState.size,theState.size))
-                        print('quay lại',i)   
-                        print(visited)        
-                        theState.terminal_display()        
+                        print("before recursion",visited)
+                        DFSUtil(theState,visited)    
+                        print("after recursion")
+                        visited.pop()
+                        roll_back(i,theState)
+                        theState.animated()
                     else:
-                        print("visited",i)                   
-                        if i=="left":
-                            theState.movement("right")
-                        elif i=="right":
-                            theState.movement("left")
-                        elif i=="up":
-                            theState.movement("down")
-                        elif i=="down":
-                            theState.movement("up")
+                        roll_back(i,theState)
             return False
+
+def roll_back(i,theState):
+    print("visited",i)                   
+    if i=="left":
+        theState.movement("right")
+    elif i=="right":
+        theState.movement("left")
+    elif i=="up":
+        theState.movement("down")
+    elif i=="down":
+        theState.movement("up")
