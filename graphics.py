@@ -1,5 +1,5 @@
 import pygame 
-import sys
+import sys,os
 import time
 from pygame.locals import *
 import time
@@ -17,19 +17,19 @@ def main(state):
     if WINDOW_WIDTH < 200 :
         WINDOW_WIDTH=200
     pygame.init()
-    time.sleep(0)
     SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
     CLOCK = pygame.time.Clock()
     SCREEN.fill(BLACK)
     pygame.display.set_caption(str(state.size)+" puzzle")
     #while True:
     drawGrid(state)
+    time.sleep(10)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-
     pygame.display.update()
+
 
 
 def drawGrid(state):
@@ -40,4 +40,5 @@ def drawGrid(state):
             pygame.draw.rect(SCREEN, WHITE, rect, 1)
             if state.cell[x][y]!=0:
                 SCREEN.blit(pygame.font.SysFont('Ariel', 35).render(str(state.cell[x][y]), True, WHITE), (x*50+20, y*50+20))
+
 

@@ -14,7 +14,7 @@ def main():
 	Npuzzle= State(N)
 	Npuzzle.perfect_random()
 	Npuzzle.terminal_display()
-	#Npuzzle.animated()
+	Npuzzle.animated()
 	DFS(Npuzzle)
 		
 
