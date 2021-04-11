@@ -13,11 +13,14 @@ def swap(cell,ax,ay,bx,by):
 class State:
 	cell=[]
 	def __init__(self,N):
+		"""
+		Init size, cells and empty cell coordinate for the state
+		"""
 		self.size=N
-		self.cell = [[0 for x in range(N)] for y in range(N)]
+		self.cell = [[0 for x in range(N)] for y in range(N)]				
 		self.empty_cell=[self.size-1,self.size-1] 
 		sys.setrecursionlimit(1000000)
-		
+
 	def random(self):
 		"""
 			Literally random
@@ -121,6 +124,9 @@ class State:
 			print("\n"+self.size*"------", flush=True)
 
 	def animated(self):	
+		"""
+		Call graphic module
+		"""
 		graphics.main(self)
 
 

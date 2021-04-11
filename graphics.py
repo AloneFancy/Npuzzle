@@ -11,6 +11,9 @@ WINDOW_WIDTH =800
 
 
 def main(state):
+    """
+    Init Pygame window with flexible size
+    """
     global SCREEN, CLOCK
     WINDOW_HEIGHT=state.size*50
     WINDOW_WIDTH=state.size*50
@@ -33,7 +36,10 @@ def main(state):
 
 
 def drawGrid(state):
-    blockSize = state.size #Set the size of the grid block
+    """
+    DRAW GRID AND NUMBER ON IT
+    """
+    blockSize = state.size               #Set the size of the grid block
     for x in range(0,blockSize):
         for y in range(0,blockSize):
             rect = pygame.Rect(x*50, y*50,50, 50)
