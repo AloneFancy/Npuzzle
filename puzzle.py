@@ -54,7 +54,6 @@ def DFSUtil(theState,visited):
                         print("before recursion",visited)
                         DFSUtil(theState,visited)    
                         print("after recursion")
-                        visited.pop()
                         roll_back(i,theState)
                         theState.animated()
                     else:
