@@ -2,7 +2,6 @@
 import sys
 from puzzle import *
 from state import *
-from stackDFS import *
 
 def main():
 	N="sdsad"
@@ -14,8 +13,8 @@ def main():
 	Npuzzle= State(N)
 	Npuzzle.perfect_random()
 	Npuzzle.terminal_display()
-	Npuzzle.animated()
-	#DFS(Npuzzle)
+	#Npuzzle.animated()
+	DFS(Npuzzle)
 		
 
 if __name__=='__main__':

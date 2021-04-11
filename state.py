@@ -32,14 +32,14 @@ class State:
 
 	def perfect_random(self):
 		"""
-			Randomize the game the way that can be solved
+			Randomize the game the way that can be solved by using random.choice
 		"""
 		for row in range(0,self.size):
 			for col in range(0,self.size):
 				self.cell[col][row]=row*self.size+col+1
 		self.cell[self.size-1][self.size-1]=0
 		move=['left','right','up','down']
-		for i in range(0,random.randint(2,100))	:
+		for i in range(0,1000)	:
 			j=random.choice(move)
 			if not self.check_illegal(j,self.empty_cell[0],self.empty_cell[1]):   
 				self.movement(j)
