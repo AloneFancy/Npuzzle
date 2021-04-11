@@ -1,7 +1,8 @@
 
 ## Usage
 
-```python main.py
+```
+python main.py
 ```
 Then follow the instructions
 
